@@ -84,16 +84,16 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         setVisible(true);
     }
 
-    private void inicializarSimulacao() {
+    public void inicializarSimulacao() {
         try {
             numCriaturas = Integer.parseInt(txtNumCriaturas.getText().trim());
             if (numCriaturas <= 0) {
                 JOptionPane.showMessageDialog(this, "O número de criaturas deve ser positivo.");
-                return;
+                throw new IllegalArgumentException("O número de criaturas deve ser positivo.");
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Por favor, insira um número válido.");
-            return;
+            throw e;
         }
 
         posicoes = new double[numCriaturas];
@@ -112,7 +112,7 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         repaint();
     }
 
-    private void iniciarSimulacao() {
+    public void iniciarSimulacao() {
         if (!timer.isRunning()) {
             if (posicoes == null) {
                 inicializarSimulacao();
@@ -123,7 +123,7 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         }
     }
 
-    private void pausarSimulacao() {
+    public void pausarSimulacao() {
         timer.stop();
         btnIniciar.setEnabled(true);
         btnPausar.setEnabled(false);
@@ -136,7 +136,7 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         btnPausar.setEnabled(false);
     }
 
-    private void avancarIteracao() {
+    public void avancarIteracao() {
         assert posicoes != null;
 
         iteracaoAtual++;
@@ -182,6 +182,118 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         }
 
         return indiceMaisProximo;
+    }
+
+    public int getNumCriaturas() {
+        return numCriaturas;
+    }
+
+    public void setNumCriaturas(int numCriaturas) {
+        this.numCriaturas = numCriaturas;
+    }
+
+    public int getIteracaoAtual() {
+        return iteracaoAtual;
+    }
+
+    public void setIteracaoAtual(int iteracaoAtual) {
+        this.iteracaoAtual = iteracaoAtual;
+    }
+
+    public double[] getPosicoes() {
+        return posicoes;
+    }
+
+    public void setPosicoes(double[] posicoes) {
+        this.posicoes = posicoes;
+    }
+
+    public int[] getMoedas() {
+        return moedas;
+    }
+
+    public void setMoedas(int[] moedas) {
+        this.moedas = moedas;
+    }
+
+    public Color[] getCores() {
+        return cores;
+    }
+
+    public void setCores(Color[] cores) {
+        this.cores = cores;
+    }
+
+    public Random getRandom() {
+        return random;
+    }
+
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public Timer getTimer() {
+        return timer;
+    }
+
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+
+    public JButton getBtnIniciar() {
+        return btnIniciar;
+    }
+
+    public void setBtnIniciar(JButton btnIniciar) {
+        this.btnIniciar = btnIniciar;
+    }
+
+    public JButton getBtnPausar() {
+        return btnPausar;
+    }
+
+    public void setBtnPausar(JButton btnPausar) {
+        this.btnPausar = btnPausar;
+    }
+
+    public JButton getBtnReiniciar() {
+        return btnReiniciar;
+    }
+
+    public void setBtnReiniciar(JButton btnReiniciar) {
+        this.btnReiniciar = btnReiniciar;
+    }
+
+    public JLabel getLblInfo() {
+        return lblInfo;
+    }
+
+    public void setLblInfo(JLabel lblInfo) {
+        this.lblInfo = lblInfo;
+    }
+
+    public JPanel getPainelControle() {
+        return painelControle;
+    }
+
+    public void setPainelControle(JPanel painelControle) {
+        this.painelControle = painelControle;
+    }
+
+    public JPanel getPainelGrafico() {
+        return painelGrafico;
+    }
+
+    public void setPainelGrafico(JPanel painelGrafico) {
+        this.painelGrafico = painelGrafico;
+    }
+
+    public JTextField getTxtNumCriaturas() {
+        return txtNumCriaturas;
+    }
+
+    public void setTxtNumCriaturas(JTextField txtNumCriaturas) {
+        this.txtNumCriaturas = txtNumCriaturas;
     }
 
     private class PainelGrafico extends JPanel {
