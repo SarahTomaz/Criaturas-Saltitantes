@@ -137,9 +137,7 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
     }
 
     private void avancarIteracao() {
-        if (posicoes == null) {
-            return;
-        }
+        assert posicoes != null;
 
         iteracaoAtual++;
         lblInfo.setText("Iteração: " + iteracaoAtual);
