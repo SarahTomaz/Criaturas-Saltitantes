@@ -1,4 +1,4 @@
-package com.example;
+package com.example.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -84,15 +84,16 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         setVisible(true);
     }
 
-    public void inicializarSimulacao(int numCriaturas) {
+    private void inicializarSimulacao() {
         try {
+            numCriaturas = Integer.parseInt(txtNumCriaturas.getText().trim());
             if (numCriaturas <= 0) {
                 JOptionPane.showMessageDialog(this, "O número de criaturas deve ser positivo.");
-                throw new IllegalArgumentException("O numero de criaturas deve ser maior que 0");
+                return;
             }
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(this, "Por favor, insira um número válido.");
-            throw e;
+            return;
         }
 
         posicoes = new double[numCriaturas];
@@ -114,7 +115,7 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
     private void iniciarSimulacao() {
         if (!timer.isRunning()) {
             if (posicoes == null) {
-                inicializarSimulacao(Integer.parseInt(txtNumCriaturas.getText().trim()));
+                inicializarSimulacao();
             }
             timer.start();
             btnIniciar.setEnabled(false);
@@ -130,13 +131,13 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
 
     private void reiniciarSimulacao() {
         timer.stop();
-        inicializarSimulacao(Integer.parseInt(txtNumCriaturas.getText().trim()));
+        inicializarSimulacao();
         btnIniciar.setEnabled(true);
         btnPausar.setEnabled(false);
     }
 
-    public void avancarIteracao() {
-        assert posicoes != null : "Posicoes não podem ser nulas";
+    private void avancarIteracao() {
+        assert posicoes != null;
 
         iteracaoAtual++;
         lblInfo.setText("Iteração: " + iteracaoAtual);
@@ -181,38 +182,6 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         }
 
         return indiceMaisProximo;
-    }
-
-    public int getNumCriaturas() {
-        return numCriaturas;
-    }
-
-    public void setNumCriaturas(int numCriaturas) {
-        this.numCriaturas = numCriaturas;
-    }
-
-    public double[] getPosicoes() {
-        return posicoes;
-    }
-
-    public void setPosicoes(double[] posicoes) {
-        this.posicoes = posicoes;
-    }
-
-    public int[] getMoedas() {
-        return moedas;
-    }
-
-    public void setMoedas(int[] moedas) {
-        this.moedas = moedas;
-    }
-
-    public JTextField getTxtNumCriaturas() {
-        return txtNumCriaturas;
-    }
-
-    public void setTxtNumCriaturas(JTextField txtNumCriaturas) {
-        this.txtNumCriaturas = txtNumCriaturas;
     }
 
     private class PainelGrafico extends JPanel {
