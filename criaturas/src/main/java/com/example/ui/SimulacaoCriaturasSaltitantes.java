@@ -167,7 +167,7 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         repaint();
     }
 
-    private int encontrarCriaturaMaisProxima(int indice) {
+    public int encontrarCriaturaMaisProxima(int indice) {
         if (numCriaturas <= 1) {
             return -1;
         }
@@ -237,6 +237,10 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         this.random = new Random(seed);
     }
 
+    public void setNumCriaturas(int numCriaturas) {
+        this.numCriaturas = numCriaturas;
+    }
+
     private class PainelGrafico extends JPanel {
 
         @Override
@@ -280,7 +284,4 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(SimulacaoCriaturasSaltitantes::new);
-    }
 }

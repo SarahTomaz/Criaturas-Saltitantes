@@ -55,12 +55,6 @@ public class SimulacaoCriaturasSaltitantesTest {
         Assertions.assertEquals(0, sim.getIteracaoAtual());
     }
 
-    @Test
-    public void avancarIteracaoPosicoesNotNull() {
-        this.sim.setPosicoes(null);
-        Assertions.assertThrows(AssertionError.class, () -> sim.avancarIteracao());
-    }
-
 
     @Test
     public void avancarIteracaoPosicoesNull() {
@@ -150,6 +144,21 @@ public class SimulacaoCriaturasSaltitantesTest {
         this.sim.setPosicoes(new double[]{0,0,0,0});
         Assertions.assertEquals(0, this.sim.iniciarSimulacao());
         Assertions.assertTrue(this.sim.getTimer().isRunning());
+    }
+
+    @Test
+    public void encontrarCriaturasProximaNumCriaturasInvalido() {
+        this.sim.setNumCriaturas(0);
+        Assertions.assertEquals(-1, this.sim.encontrarCriaturaMaisProxima(0));
+    }
+
+    @Test
+    public void encontrarCriaturassProximasValido() {
+        this.sim.setPosicoes(new double[]{0.5, 1, 0.6});
+        this.sim.setNumCriaturas(3);
+        Assertions.assertEquals(2, this.sim.encontrarCriaturaMaisProxima(0));
+        Assertions.assertEquals(2, this.sim.encontrarCriaturaMaisProxima(1));
+        Assertions.assertEquals(0, this.sim.encontrarCriaturaMaisProxima(2));
     }
 
 
