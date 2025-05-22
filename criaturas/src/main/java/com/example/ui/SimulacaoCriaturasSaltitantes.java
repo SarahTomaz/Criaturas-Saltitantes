@@ -7,6 +7,7 @@ import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.util.Arrays;
 import java.util.Random;
 
 import javax.swing.JButton;
@@ -112,7 +113,8 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         repaint();
     }
 
-    public void iniciarSimulacao() {
+    // return int apenas para deixar mais visível e aumentar os testes
+    public int iniciarSimulacao() {
         if (!timer.isRunning()) {
             if (posicoes == null) {
                 inicializarSimulacao();
@@ -120,7 +122,10 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
             timer.start();
             btnIniciar.setEnabled(false);
             btnPausar.setEnabled(true);
+            return 0;
         }
+
+        return -1;
     }
 
     public void pausarSimulacao() {
@@ -129,7 +134,7 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         btnPausar.setEnabled(false);
     }
 
-    private void reiniciarSimulacao() {
+    public void reiniciarSimulacao() {
         timer.stop();
         inicializarSimulacao();
         btnIniciar.setEnabled(true);
@@ -188,16 +193,8 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         return numCriaturas;
     }
 
-    public void setNumCriaturas(int numCriaturas) {
-        this.numCriaturas = numCriaturas;
-    }
-
     public int getIteracaoAtual() {
         return iteracaoAtual;
-    }
-
-    public void setIteracaoAtual(int iteracaoAtual) {
-        this.iteracaoAtual = iteracaoAtual;
     }
 
     public double[] getPosicoes() {
@@ -212,80 +209,20 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
         return moedas;
     }
 
-    public void setMoedas(int[] moedas) {
-        this.moedas = moedas;
-    }
-
     public Color[] getCores() {
         return cores;
-    }
-
-    public void setCores(Color[] cores) {
-        this.cores = cores;
-    }
-
-    public Random getRandom() {
-        return random;
-    }
-
-    public void setRandom(Random random) {
-        this.random = random;
     }
 
     public Timer getTimer() {
         return timer;
     }
 
-    public void setTimer(Timer timer) {
-        this.timer = timer;
-    }
-
     public JButton getBtnIniciar() {
         return btnIniciar;
     }
 
-    public void setBtnIniciar(JButton btnIniciar) {
-        this.btnIniciar = btnIniciar;
-    }
-
     public JButton getBtnPausar() {
         return btnPausar;
-    }
-
-    public void setBtnPausar(JButton btnPausar) {
-        this.btnPausar = btnPausar;
-    }
-
-    public JButton getBtnReiniciar() {
-        return btnReiniciar;
-    }
-
-    public void setBtnReiniciar(JButton btnReiniciar) {
-        this.btnReiniciar = btnReiniciar;
-    }
-
-    public JLabel getLblInfo() {
-        return lblInfo;
-    }
-
-    public void setLblInfo(JLabel lblInfo) {
-        this.lblInfo = lblInfo;
-    }
-
-    public JPanel getPainelControle() {
-        return painelControle;
-    }
-
-    public void setPainelControle(JPanel painelControle) {
-        this.painelControle = painelControle;
-    }
-
-    public JPanel getPainelGrafico() {
-        return painelGrafico;
-    }
-
-    public void setPainelGrafico(JPanel painelGrafico) {
-        this.painelGrafico = painelGrafico;
     }
 
     public JTextField getTxtNumCriaturas() {
@@ -294,6 +231,10 @@ public class SimulacaoCriaturasSaltitantes extends JFrame {
 
     public void setTxtNumCriaturas(JTextField txtNumCriaturas) {
         this.txtNumCriaturas = txtNumCriaturas;
+    }
+
+    public void setRadomSeed(long seed) {
+        this.random = new Random(seed);
     }
 
     private class PainelGrafico extends JPanel {
