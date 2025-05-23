@@ -1,27 +1,18 @@
-```markdown
-# Simulador de Criaturas Saltitantes
+#  Simulador de Criaturas Saltitantes
 
-Alunos: Sarah Tomaz e Thiago Henrique  
-Disciplina: Teste de Software  
+**Alunos:** Sarah Tomaz e Thiago Henrique  
+**Disciplina:** Teste de Software  
 
----
-
-## Visão Geral
-Um ecossistema simulado onde criaturas se movem aleatoriamente, roubando moedas umas das outras. Desenvolvido em Java com:
-- Interface gráfica (Swing)
+##  Visão Geral
+Simulação de um ecossistema onde criaturas se movem aleatoriamente e roubam moedas entre si. Desenvolvido em Java com:
+- Interface gráfica Swing
 - Lógica de simulação baseada em movimentos aleatórios
-- Testes unitários abrangentes (JUnit 5)
+- Testes unitários com JUnit 5
 
----
-
-## Arquitetura do Sistema
-
-###  Classe Principal: `SimulacaoCriaturasSaltitantes` (JFrame)
-Configurações:
-
-private static final int LARGURA_JANELA = 1000;
-private static final int ALTURA_JANELA = 600;
-private static final int DELAY_SIMULACAO = 500;
+##  Como Executar
+1. Compile o projeto:
+```bash
+javac SimulacaoCriaturasSaltitantes.java
 ```
 
 **Atributos:**
@@ -32,7 +23,7 @@ private static final int DELAY_SIMULACAO = 500;
 
 ---
 
-## ⚙️ Funcionalidades
+##  Funcionalidades
 
 ###  Métodos de Controle
 | Método                | Ação                                                                 |
