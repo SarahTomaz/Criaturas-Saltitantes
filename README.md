@@ -1,12 +1,12 @@
 ```markdown
-#  Simulador de Criaturas Saltitantes
+# Simulador de Criaturas Saltitantes
 
 **Alunos:** Sarah Tomaz e Thiago Henrique  
 **Disciplina:** Teste de Software  
 
 ---
 
-##  Visão Geral
+## Visão Geral
 Um ecossistema simulado onde criaturas se movem aleatoriamente, roubando moedas umas das outras. Desenvolvido em **Java** com:
 - Interface gráfica (**Swing**)
 - Lógica de simulação baseada em movimentos aleatórios
@@ -14,7 +14,7 @@ Um ecossistema simulado onde criaturas se movem aleatoriamente, roubando moedas 
 
 ---
 
-##  Arquitetura do Sistema
+## Arquitetura do Sistema
 
 ###  Classe Principal: `SimulacaoCriaturasSaltitantes` (JFrame)
 **Configurações:**
