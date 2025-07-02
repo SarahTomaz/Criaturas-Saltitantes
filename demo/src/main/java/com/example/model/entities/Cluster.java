@@ -348,8 +348,4 @@ public class Cluster implements Serializable {
     public String getId() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
-
-    public String getId() {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
 }
