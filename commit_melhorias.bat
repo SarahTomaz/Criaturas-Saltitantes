@@ -9,11 +9,12 @@ git init
 
 echo.
 echo 2. Configurando remote para o repositorio GitHub...
+git remote remove origin 2>nul
 git remote add origin https://github.com/SarahTomaz/Criaturas-Saltitantes.git
 
 echo.
 echo 3. Criando branch para as melhorias...
-git checkout -b feature/visualizacao-melhorada
+git checkout -b feature/visualizacao-melhorada 2>nul || git checkout feature/visualizacao-melhorada
 
 echo.
 echo 4. Adicionando arquivos ao staging...
@@ -21,17 +22,17 @@ git add .
 
 echo.
 echo 5. Fazendo commit das alteracoes...
-git commit -m "feat nova
+git commit -m "feat nova 
 
-- Adiciona visualização em tempo real de criaturas, clusters e guardião
-- Implementa exibição visual das moedas para todos os elementos
-- Adiciona controle de velocidade da simulação (4 opções)
-- Melhora interface com estatísticas em tempo real
-- Acelera velocidade padrão de 1s para 300ms por iteração
+- Adiciona visualizacao em tempo real de criaturas, clusters e guardiao
+- Implementa exibicao visual das moedas para todos os elementos
+- Adiciona controle de velocidade da simulacao (4 opcoes)
+- Melhora interface com estatisticas em tempo real
+- Acelera velocidade padrao de 1s para 300ms por iteracao
 - Adiciona sombras e melhorias visuais nos elementos
-- Implementa painel de configurações expandido
-- Corrige lógica de atualização das moedas do guardião
-- Adiciona documentação completa das funcionalidades"
+- Implementa painel de configuracoes expandido
+- Corrige logica de atualizacao das moedas do guardiao
+- Adiciona documentacao completa das funcionalidades"
 
 echo.
 echo 6. Fazendo push para o GitHub...
