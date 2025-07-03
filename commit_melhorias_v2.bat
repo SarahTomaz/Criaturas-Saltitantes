@@ -52,7 +52,7 @@ if !errorlevel! neq 0 (
 
 echo.
 echo 8. Fazendo commit das alteracoes...
-git commit -m "feat: Implementa visualizacao grafica completa e controle de velocidade" -m "- Adiciona visualizacao em tempo real de criaturas, clusters e guardiao" -m "- Implementa exibicao visual das moedas para todos os elementos" -m "- Adiciona controle de velocidade da simulacao (4 opcoes)" -m "- Melhora interface com estatisticas em tempo real" -m "- Acelera velocidade padrao de 1s para 300ms por iteracao" -m "- Adiciona sombras e melhorias visuais nos elementos" -m "- Implementa painel de configuracoes expandido" -m "- Corrige logica de atualizacao das moedas do guardiao" -m "- Adiciona documentacao completa das funcionalidades"
+git commit -m "feat nova" 
 
 echo.
 echo 9. Fazendo push para o GitHub...
