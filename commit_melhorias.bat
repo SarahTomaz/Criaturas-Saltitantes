@@ -21,7 +21,7 @@ git add .
 
 echo.
 echo 5. Fazendo commit das alteracoes...
-git commit -m "feat: Implementa visualização gráfica completa e controle de velocidade
+git commit -m "feat nova
 
 - Adiciona visualização em tempo real de criaturas, clusters e guardião
 - Implementa exibição visual das moedas para todos os elementos
