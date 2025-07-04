@@ -234,24 +234,6 @@ Contribuições são bem-vindas! Siga estes passos:
 - [ ] Adicionar suporte a plugins
 - [ ] Migrar para base de dados relacional
 
-## 🐛 Problemas Conhecidos
-
-Consulte as [Issues](https://github.com/SarahTomaz/Criaturas-Saltitantes/issues) para problemas conhecidos e solicitações de funcionalidades.
-
-## 📄 Licença
-
-Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
-
-## 👩‍💻 Autores
-
-- **Sarah Tomaz** - *Desenvolvimento Principal* - [@SarahTomaz](https://github.com/SarahTomaz)
-
-## 🙏 Agradecimentos
-
-- Comunidade Java pela documentação excelente
-- Contribuidores do JUnit e Mockito
-- Equipe do jqwik pelo framework de property-based testing
-
 ---
 
 **⭐ Se este projeto foi útil para você, considere dar uma estrela!**
