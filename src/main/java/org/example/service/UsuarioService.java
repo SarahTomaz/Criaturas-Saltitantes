@@ -9,9 +9,13 @@ import java.util.Optional;
 
 public class UsuarioService {
 
-    private static final String ARQUIVO_USUARIOS = "data/usuarios.ser";
+    private static String ARQUIVO_USUARIOS = "data/usuarios.ser";
     private List<Usuario> usuarios;
     private Usuario usuarioLogado;
+
+    public static void setArquivoUsuarios(String arquivoUsuarios) {
+        ARQUIVO_USUARIOS = arquivoUsuarios;
+    }
 
     public UsuarioService() {
         this.usuarios = new ArrayList<>();

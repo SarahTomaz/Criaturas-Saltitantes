@@ -16,11 +16,26 @@ public class TestUsuarioService {
     public UsuarioService usuarioService;
     public static String tempFilePath;
 
-
+    @TempDir
+    Path tempDir;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws Exception {
+        File tempFile = tempDir.resolve("test_usuarios.ser").toFile();
+        tempFilePath = tempFile.getAbsolutePath();
+        UsuarioService.setArquivoUsuarios(tempFilePath);
         usuarioService = new UsuarioService();
+    }
+
+    @AfterEach
+    void tearDown() {
+        usuarioService = null;
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        File file = new File(tempFilePath);
+        file.delete();
     }
 
     // Helper method to modify a `static final` field.
@@ -230,8 +245,8 @@ public class TestUsuarioService {
     @DisplayName("Deve listar todos os usuários")
     void listarUsuarios_DeveRetornarListaCorreta() {
         // Arrange
-        usuarioService.cadastrarUsuario("user1", "s1", "a1.png");
-        usuarioService.cadastrarUsuario("user2", "s2", "a2.png");
+        usuarioService.cadastrarUsuario("user1", "s1aaa", "a1.png");
+        usuarioService.cadastrarUsuario("user2", "s2aaa", "a2.png");
 
         // Act
         List<Usuario> usuarios = usuarioService.listarUsuarios();
@@ -247,7 +262,7 @@ public class TestUsuarioService {
     @DisplayName("A lista de usuários retornada deve ser uma cópia")
     void listarUsuarios_DeveRetornarCopia() {
         // Arrange
-        usuarioService.cadastrarUsuario("user1", "s1", "a1.png");
+        usuarioService.cadastrarUsuario("user1", "s1aaa", "a1.png");
         List<Usuario> usuarios = usuarioService.listarUsuarios();
 
         // Act
