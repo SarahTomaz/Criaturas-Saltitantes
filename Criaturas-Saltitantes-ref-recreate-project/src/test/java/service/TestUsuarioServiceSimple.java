@@ -22,7 +22,7 @@ public class TestUsuarioService {
     void cadastrarUsuario_DadosValidos() {
         // Act
         boolean resultado = usuarioService.cadastrarUsuario("testUser", "password123", "avatar.png");
-        
+
         // Assert
         assertTrue(resultado);
         Usuario usuario = usuarioService.autenticar("testUser", "password123");
@@ -36,10 +36,10 @@ public class TestUsuarioService {
     void cadastrarUsuario_LoginJaExistente() {
         // Arrange
         usuarioService.cadastrarUsuario("testUser", "password123", "avatar.png");
-        
+
         // Act
         boolean resultado = usuarioService.cadastrarUsuario("testUser", "newPassword", "newAvatar.png");
-        
+
         // Assert
         assertFalse(resultado);
     }
@@ -54,7 +54,7 @@ public class TestUsuarioService {
         Exception exception2 = assertThrows(IllegalArgumentException.class, () -> {
             usuarioService.cadastrarUsuario("teste", "", "avatar.png");
         });
-        
+
         assertNotNull(exception1);
         assertNotNull(exception2);
     }
@@ -64,10 +64,10 @@ public class TestUsuarioService {
     void autenticar_ComCredenciaisCorretas() {
         // Arrange
         usuarioService.cadastrarUsuario("testUser", "password123", "avatar.png");
-        
+
         // Act
         Usuario usuario = usuarioService.autenticar("testUser", "password123");
-        
+
         // Assert
         assertNotNull(usuario);
         assertEquals("testUser", usuario.getLogin());
@@ -78,7 +78,7 @@ public class TestUsuarioService {
     void autenticar_ComCredenciaisIncorretas() {
         // Arrange
         usuarioService.cadastrarUsuario("testUser", "password123", "avatar.png");
-        
+
         // Act & Assert
         assertNull(usuarioService.autenticar("testUser", "wrongPassword"));
         assertNull(usuarioService.autenticar("wrongUser", "password123"));
@@ -90,10 +90,10 @@ public class TestUsuarioService {
         // Arrange
         usuarioService.cadastrarUsuario("user1", "password123", "avatar1.png");
         usuarioService.cadastrarUsuario("user2", "password456", "avatar2.png");
-        
+
         // Act
         List<Usuario> usuarios = usuarioService.listarUsuarios();
-        
+
         // Assert
         assertNotNull(usuarios);
         assertTrue(usuarios.size() >= 2);
@@ -107,14 +107,14 @@ public class TestUsuarioService {
         // Arrange
         usuarioService.cadastrarUsuario("user1", "password123", "avatar1.png");
         usuarioService.cadastrarUsuario("user2", "password456", "avatar2.png");
-        
+
         Usuario usuarioOriginal = usuarioService.autenticar("user1", "password123");
         assertNotNull(usuarioOriginal);
-        
+
         // Act
         usuarioOriginal.setAvatar("novoAvatar.png");
         usuarioService.atualizarUsuario(usuarioOriginal);
-        
+
         // Assert
         List<Usuario> usuarios = usuarioService.listarUsuarios();
         assertTrue(usuarios.size() >= 2);
@@ -126,13 +126,13 @@ public class TestUsuarioService {
 
         assertNotNull(user1Atualizado);
         assertEquals("novoAvatar.png", user1Atualizado.getAvatar());
-        
+
         // Verificar que user2 não foi afetado
         Usuario user2 = usuarios.stream()
                 .filter(u -> u.getLogin().equals("user2"))
                 .findFirst()
                 .orElse(null);
-        
+
         assertNotNull(user2);
         assertEquals("avatar2.png", user2.getAvatar());
     }
@@ -143,10 +143,10 @@ public class TestUsuarioService {
         // Arrange
         usuarioService.cadastrarUsuario("userToRemove", "password123", "avatar.png");
         usuarioService.cadastrarUsuario("userToKeep", "password456", "avatar2.png");
-        
+
         // Act
         boolean resultado = usuarioService.removerUsuario("userToRemove");
-        
+
         // Assert
         assertTrue(resultado);
         assertNull(usuarioService.autenticar("userToRemove", "password123"));
@@ -158,7 +158,7 @@ public class TestUsuarioService {
     void removerUsuario_UsuarioInexistente() {
         // Act
         boolean resultado = usuarioService.removerUsuario("inexistente");
-        
+
         // Assert
         assertFalse(resultado);
     }
@@ -168,11 +168,11 @@ public class TestUsuarioService {
     void gerenciarUsuarioLogado() {
         // Arrange
         usuarioService.cadastrarUsuario("testUser", "password123", "avatar.png");
-        
+
         // Act & Assert - Login através de autenticação
         Usuario usuario = usuarioService.autenticar("testUser", "password123");
         assertEquals(usuario, usuarioService.getUsuarioLogado());
-        
+
         // Act & Assert - Logout
         usuarioService.logout();
         assertNull(usuarioService.getUsuarioLogado());

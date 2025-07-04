@@ -18,7 +18,7 @@ import org.junit.jupiter.api.io.TempDir;
 public class TestUsuarioService {
 
     private UsuarioService usuarioService;
-    
+
     @TempDir
     Path tempDir;
 
