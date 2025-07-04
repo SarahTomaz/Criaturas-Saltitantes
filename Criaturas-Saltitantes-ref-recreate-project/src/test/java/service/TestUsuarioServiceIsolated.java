@@ -135,7 +135,7 @@ public class TestUsuarioServiceIsolated {
     @Test
     @Order(6)
     @DisplayName("Deve retornar null quando login E senha são null (MC/DC)")
-    void autenticar_LoginESenhaNulos_MCDC() {
+    void Autenticar_LoginESenhaNulos_MCDC() {
         // Act
         Usuario resultado = usuarioService.autenticar(null, null);
 
