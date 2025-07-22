@@ -31,9 +31,11 @@ public class Cluster {
     }
 
     public void adicionarCriatura(Criatura criatura) {
-        this.criaturas.add(criatura);
-        this.totalMoedas += criatura.getMoedas();
-        criatura.desativar();
+        if (criatura.isAtiva()) {
+            this.criaturas.add(criatura);
+            this.totalMoedas += criatura.getMoedas();
+            criatura.desativar();
+        }
     }
 
     public void mover() {
