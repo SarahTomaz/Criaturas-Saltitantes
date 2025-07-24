@@ -25,6 +25,7 @@ class EstatisticasStructuralTest {
     @Test
     @DisplayName("MC/DC para getEstatisticasUsuario - Todas condições")
     void getEstatisticasUsuario_MCDC() {
+        usuarioService.removerUsuario("user1");
         // Condição 1: Usuário não existe
         assertEquals("Usuário não encontrado.", estatisticasService.getEstatisticasUsuario("inexistente"));
 

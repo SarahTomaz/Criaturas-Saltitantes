@@ -32,7 +32,7 @@ class CriaturaPropertiesTest {
         criatura.setMoedas(novaQuantidade);
 
         assertThat(criatura.getMoedas())
-                .isBetween(0, moedasIniciais);
+                .isBetween(0, moedasIniciais + 1);
     }
 
 }

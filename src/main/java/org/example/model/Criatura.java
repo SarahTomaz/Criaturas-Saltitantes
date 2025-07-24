@@ -47,7 +47,7 @@ public class Criatura {
     public void mover() {
         if (ativa) {
             double r = (random.nextDouble() * 2) - 1; // Valor entre -1 e 1
-            posicao = posicao + (r * moedas);
+            posicao = posicao + (r * 100);
         }
     }
 
@@ -114,10 +114,6 @@ public class Criatura {
     }
 
     public void setAtiva(boolean b) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    public void perderMoedas(long moedasParaPerder) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.ativa = b;
     }
 }

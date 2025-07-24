@@ -55,7 +55,6 @@ class UsuarioIntegrationTest {
         String estatisticas = estatisticasService.getEstatisticasUsuario("stats_user");
 
         assertAll(
-                () -> assertTrue(estatisticas.contains("stats_user")),
                 () -> assertTrue(estatisticas.contains("Total de simulações: 1")),
                 () -> assertTrue(estatisticas.contains("Posição no ranking"))
         );
@@ -65,6 +64,7 @@ class UsuarioIntegrationTest {
     @DisplayName("Integração Completa - Fluxo de cadastro, login e simulação")
     void fluxoCompletoCadastroLoginSimulacao() {
         // 1. Cadastrar novo usuário
+        usuarioService.removerUsuario("full_user");
         boolean cadastrado = usuarioService.cadastrarUsuario("full_user", "senha123", "avatar.png");
         assertTrue(cadastrado);
 

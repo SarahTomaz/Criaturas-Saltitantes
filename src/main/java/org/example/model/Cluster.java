@@ -40,7 +40,7 @@ public class Cluster {
 
     public void mover() {
         double r = (random.nextDouble() * 2) - 1; // Valor entre -1 e 1
-        posicao = posicao + (r * totalMoedas);
+        posicao = posicao + (r * (totalMoedas%100) + 1);
     }
 
     public void roubarMoedasDeVizinho(Criatura vizinho) {

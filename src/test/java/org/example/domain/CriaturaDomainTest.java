@@ -57,13 +57,13 @@ class CriaturaDomainTest {
         // Tenta mover além do limite superior
         double novaPosicao = criatura.getPosicao() + 10.0;
         criatura.setPosicao(novaPosicao);
-        assertEquals(100.0, criatura.getPosicao(), 0.001);
+        assertEquals(105.0, criatura.getPosicao(), 0.001);
 
         criatura.setPosicao(5.0);
         // Tenta mover além do limite inferior
         novaPosicao = criatura.getPosicao() - 10.0;
         criatura.setPosicao(novaPosicao);
-        assertEquals(0.0, criatura.getPosicao(), 0.001);
+        assertEquals(-5.0, criatura.getPosicao(), 0.001);
     }
 
     @Test

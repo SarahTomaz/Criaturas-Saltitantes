@@ -13,8 +13,11 @@ class SimulacaoJourneyTest {
     @Test
     @DisplayName("User Journey Completa - Cadastro, Login e Simulação Bem-sucedida")
     void userJourneyCompleta() {
+
+
         // 1. Cadastro
         UsuarioService usuarioService = new UsuarioService();
+        usuarioService.removerUsuario("journey_user");
         boolean cadastroSucesso = usuarioService.cadastrarUsuario("journey_user", "senha123", "avatar.png");
         assertTrue(cadastroSucesso);
 
